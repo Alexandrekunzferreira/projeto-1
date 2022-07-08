@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MotoresP
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] motores = new double[15];
+            double tot = 0;
+            int opcao = 0;
+            int pos = 0;
+            int aux = 1;
+
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("O. Sair");
+                Console.WriteLine("1. Lançar Valor");
+                Console.WriteLine("2. aparecer Valores");
+
+                Console.Write("\nEscolha uma Opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                while (opcao < 0 || opcao > 2)
+                {
+                    Console.Write("\nInforme uma Opção: ");
+                    opcao = int.Parse(Console.ReadLine());
+                }
+                Console.Clear();
+
+                if (opcao == 1)
+                {
+                    Console.WriteLine("Escolha o Motor  (1...15): ");
+                    pos = int.Parse(Console.ReadLine());
+
+                    while (pos < 1 || pos > 15)
+                    {
+                        Console.WriteLine("Escolha o Motor  (1...15): ");
+                        pos = int.Parse(Console.ReadLine());
+                    }
+
+                    Console.WriteLine("\nInforme o valor gasto com o motor {0} (R$): ", pos);
+                    motores[pos - 1] += double.Parse(Console.ReadLine());
+
+                    Console.Write("\nPressione 'ENTER' Para Exibir o Menu ");
+                    Console.ReadKey();
+                }
+
+                if (opcao == 2)
+                {
+
+                    for (int i = 0; i < 15; i++)
+                    {
+                        Console.WriteLine("Motor:{0: 00}  Valor: {1}", aux, motores[i]);
+                        aux++;
+                    }
+
+                    aux = 1;
+
+                    tot = motores[0] + motores[1] + motores[2] + motores[3] + motores[4] + motores[5] + motores[6] + motores[7] + motores[8] + motores[9] + motores[10] + motores[11] + motores[12] + motores[13] + motores[14];
+
+                    Console.WriteLine("-------------------------");
+                    Console.WriteLine("\nTotal: {0}", tot);
+                    Console.Write("\nAperte 'ENTER' Para Exibir o Menu ");
+                    Console.ReadKey();
+                }
+
+            } while (opcao != 0);
+        }
+    }
+}
+
